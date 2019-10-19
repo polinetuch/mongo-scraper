@@ -21,14 +21,12 @@ var headlineSchema = new Schema({
         unique: true,
     },
 
-    date: { 
-        type: Date,
-        default: Date.now
-    },
     saved: { 
         type: Boolean,
         default: false
     }
 });
 
-var Headline = mongoose.model("Headline", headlineSchema)
+var Headline = mongoose.model("Headline", headlineSchema);
+
+module.exports = headlineSchema;

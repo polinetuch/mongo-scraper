@@ -3,13 +3,15 @@ var express = require("express");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
 
+var axios = require("axios");
+var cheerio = require("cheerio");
+
+var db = require("./models");
+
 // Setting port for localhost
 var PORT = process.env.PORT || 3000;
 
 var app = express();
-
-// require routes
-var routes = require("./routes");
 
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
