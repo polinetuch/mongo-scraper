@@ -37,29 +37,34 @@ app.get("/scrape", function(req, res) {
     
     var $ = cheerio.load(response.data);
 
+    var result = []; 
+
     $(".post-block__title__link").each(function(i, element) {
 
-      var result = [];
+      var title = $(element).children().text();
 
-      result.title = $(this).children("a").text();
+      var url = $(element).find("a").attr("href");
 
-      result.link = $(this).attr("href");
-
-      db.mongoHeadlines.create(result).then(function(dbArticle) {
-       
-        console.log(dbArticle);
-
-      }). catch(function(error) {
-
-        console.log(error)
-
+      result.push({
+        title: title,
+        url: url
       });
+
+    //   db.mongoHeadlines.create(result).then(function(dbArticle) {
+       
+    //     console.log(dbArticle);
+
+    //   }). catch(function(error) {
+
+    //     console.log(error)
+
+    //   });
 
     });
 
     res.send("Scrape Complete");
   });
-})
+});
 
 // app is listening on the port
 app.listen(PORT, function() {
