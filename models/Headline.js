@@ -7,8 +7,7 @@ var Schema = mongoose.Schema;
 var headlineSchema = new Schema({
     headline: {
         type: String,
-        required: true,
-        unique: { index: { unique: true }}
+        required: true
     },
 
     summary: { 
@@ -18,7 +17,7 @@ var headlineSchema = new Schema({
 
     url: { 
         type: String,
-        unique: true,
+        required: true,
     },
 
     saved: { 
@@ -27,6 +26,6 @@ var headlineSchema = new Schema({
     }
 });
 
-var Headline = mongoose.model("Headline", headlineSchema);
+var Headline = mongoose.model("headline", headlineSchema);
 
-module.exports = headlineSchema;
+module.exports = Headline;

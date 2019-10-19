@@ -50,15 +50,15 @@ app.get("/scrape", function(req, res) {
         url: url
       });
 
-    //   db.mongoHeadlines.create(result).then(function(dbArticle) {
+      db.Article.create(result).then(function(dbArticle) {
        
-    //     console.log(dbArticle);
+        console.log(dbArticle);
 
-    //   }). catch(function(error) {
+      }). catch(function(error) {
 
-    //     console.log(error)
+        console.log(error)
 
-    //   });
+      });
 
     });
 
